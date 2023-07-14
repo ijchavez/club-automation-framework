@@ -25,8 +25,8 @@ public class LoginPage extends BasePage {
 
     public LoginPage(WebDriver driver, Scenario scenario) {
         super(driver);
-        this.driver=driver;
-        this.scenario=scenario;
+        this.driver = driver;
+        this.scenario = scenario;
         PageFactory.initElements(driver, this);
     }
 
@@ -43,9 +43,6 @@ public class LoginPage extends BasePage {
                 break;
             case FirmAdminEnterprise:
                 sendKeysInElement(EMAIL_FIELD, DataConstant.EMAIL_FIRM_ADMIN_ENTERPRISE);
-                break;
-            case AdvisorEnterprise:
-                sendKeysInElement(EMAIL_FIELD, DataConstant.EMAIL_ADVISOR_ENTERPRISE);
                 break;
             default:
                 break;

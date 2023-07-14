@@ -2,29 +2,5 @@ package utils.enums;
 
 public enum RegisterAccounts {
     superAdmin,
-    firmLegacySecurity1,
-    advLegacySecurity11FromFirm1,
-    advLegacySecurity21FromFirm1,
-    hhLegacySecurity121FromAdv21,
-    hhLegacySecurity221FromAdv21,
-    firmLegacySecurity2,
-    advLegacySecurity12FromFirm2,
-    hhLegacySecurity112FromAdv12,
-    firmLegacyLifeHubPackage,
-    firmLegacyFullPackage,
-    firmFlatSecurity1,
-    advFlatSecurity11FromFirm1,
-    hhFlatSecurity11FromAdv11,
-    advFlatSecurity21FromFirm1,
-    hhFlatSecurity12FromAdv21,
-    hhFlatSecurity22FromAdv21,
-    hhFlatSecurity31FromFirm1,
-    firmFlatSecurity2,
-    advFlatSecurity12FromFirm2,
-    hhFlatSecurity11FromAdv12,
-    firmEnterpriseSecurity1,
-    advEnterpriseSecurity11FromFirm1,
-    firmEnterpriseGroup,
-    advEnterpriseGroupOne,
-    advEnterpriseGroupTwo
+    normalAccount
 }

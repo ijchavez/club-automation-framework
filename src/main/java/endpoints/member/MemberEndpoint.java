@@ -18,7 +18,6 @@ public class MemberEndpoint extends BasePageEndpoint {
     }
 
 
-
     /**
      * The removeMemberFromList method make a delete request to delete one specific member
      *
@@ -26,7 +25,7 @@ public class MemberEndpoint extends BasePageEndpoint {
      * @return the status 200 if the request was success and 400 if not
      */
     public int removeMemberFromList(Long memberId) {
-        return JsonPath.from(this.requestFactory.makeRequest(2.0f).body("{}")
+        return JsonPath.from(this.requestFactory.makeRequest().body("{}")
                 .delete(DataConstantQueries.PATH_FOR_MEMBER + memberId.toString()).asString()).getBoolean("success") ? 200 : 400;
     }
 

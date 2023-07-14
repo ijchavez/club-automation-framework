@@ -31,7 +31,7 @@ public class LoginPageEndpoint extends BasePageEndpoint {
         try {
             Response response = this.requestFactory.makeRequest(false).body(objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(loginPayload))
                     .post(DataConstantQueries.PATH_TO_LOGIN);
-            return JsonPath.from(response.asString()).getString("result.accessToken");
+            return JsonPath.from(response.asString()).getString("token");
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             return e.getMessage();

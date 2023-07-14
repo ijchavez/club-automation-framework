@@ -127,7 +127,7 @@ public class HelperMethods {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             String payloadFormatted = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(payload);
-            return requestFactory.makeRequest(2.0f).body("[\n" + payloadFormatted + "\n]")
+            return requestFactory.makeRequest().body("[\n" + payloadFormatted + "\n]")
                     .post(DataConstantQueries.PATH_FOR_MEMBER);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
@@ -147,13 +147,14 @@ public class HelperMethods {
         try {
             String payloadFormatted = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(payload);
             String payloadSurrounded = isPayloadSurroundBrackets ? "[\n" + payloadFormatted + "\n]" : payloadFormatted;
-            return requestFactory.makeRequest(2.0f).body(payloadSurrounded)
+            return requestFactory.makeRequest().body(payloadSurrounded)
                     .put(DataConstantQueries.PATH_FOR_MEMBER + id.toString());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
             throw new RuntimeException();
         }
     }
+
     public static String getTimeStamp() {
         Date date = new Date();
         return String.valueOf(date.getTime());

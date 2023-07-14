@@ -10,110 +10,18 @@ import utils.enums.RegisterAccounts;
 public class LoginPayload {
 
     @Expose
-    private String emailAddress;
+    private String email;
     @Expose
     private String password;
 
     public LoginPayload(RegisterAccounts registerAccounts) {
         switch (registerAccounts) {
-            case firmLegacySecurity1:
-                this.setEmailAddress(DataConstant.FIRM_LEGACY_SECURITY1);
+            case superAdmin:
+                this.setEmail(DataConstant.EMAIL_ACCOUNT_ADMIN);
                 this.setPassword(DataConstant.PASSWORD);
                 break;
-            case advLegacySecurity11FromFirm1:
-                this.setEmailAddress(DataConstant.ADV_LEGACY_SECURITY11_FROM_FIRM1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advLegacySecurity21FromFirm1:
-                this.setEmailAddress(DataConstant.ADV_LEGACY_SECURITY21_FROM_FIRM1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhLegacySecurity121FromAdv21:
-                this.setEmailAddress(DataConstant.HH_LEGACY_SECURITY121_FROM_ADV21);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhLegacySecurity221FromAdv21:
-                this.setEmailAddress(DataConstant.HH_LEGACY_SECURITY221_FROM_ADV21);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case firmLegacySecurity2:
-                this.setEmailAddress(DataConstant.FIRM_LEGACY_SECURITY2);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advLegacySecurity12FromFirm2:
-                this.setEmailAddress(DataConstant.ADV_LEGACY_SECURITY12_FROM_FIRM2);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhLegacySecurity112FromAdv12:
-                this.setEmailAddress(DataConstant.HH_LEGACY_SECURITY112_FROM_ADV12);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case firmFlatSecurity1:
-                this.setEmailAddress(DataConstant.FIRM_FLAT_SECURITY1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advFlatSecurity11FromFirm1:
-                this.setEmailAddress(DataConstant.ADV_FLAT_SECURITY11_FROM_FIRM1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhFlatSecurity11FromAdv11:
-                this.setEmailAddress(DataConstant.HH_FLAT_SECURITY11_FROM_ADV11);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advFlatSecurity21FromFirm1:
-                this.setEmailAddress(DataConstant.ADV_FLAT_SECURITY21_FROM_FIRM1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhFlatSecurity12FromAdv21:
-                this.setEmailAddress(DataConstant.HH_FLAT_SECURITY12_FROM_ADV21);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhFlatSecurity22FromAdv21:
-                this.setEmailAddress(DataConstant.HH_FLAT_SECURITY22_FROM_ADV21);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhFlatSecurity31FromFirm1:
-                this.setEmailAddress(DataConstant.HH_FLAT_SECURITY31_FROM_FIRM1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case firmFlatSecurity2:
-                this.setEmailAddress(DataConstant.FIRM_FLAT_SECURITY2);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advFlatSecurity12FromFirm2:
-                this.setEmailAddress(DataConstant.ADV_FLAT_SECURITY12_FROM_FIRM2);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case hhFlatSecurity11FromAdv12:
-                this.setEmailAddress(DataConstant.HH_FLAT_SECURITY11_FROM_ADV12);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case firmLegacyLifeHubPackage:
-                this.setEmailAddress(DataConstant.FIRM_LEGACY_LIFE_HUB_PACKAGE);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case firmLegacyFullPackage:
-                this.setEmailAddress(DataConstant.FIRM_LEGACY_FULL_PACKAGE);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case firmEnterpriseSecurity1:
-                this.setEmailAddress(DataConstant.FIRM_ENTERPRISE_SECURITY1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advEnterpriseSecurity11FromFirm1:
-                this.setEmailAddress(DataConstant.ADV_ENTERPRISE_SECURITY11_FROM_FIRM1);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case firmEnterpriseGroup:
-                this.setEmailAddress(DataConstant.FIRM_ENTERPRISE_GROUP);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advEnterpriseGroupOne:
-                this.setEmailAddress(DataConstant.ADV_ENTERPRISE_GROUP_ONE);
-                this.setPassword(DataConstant.PASSWORD);
-                break;
-            case advEnterpriseGroupTwo:
-                this.setEmailAddress(DataConstant.ADV_ENTERPRISE_GROUP_TWO);
+            case normalAccount:
+                this.setEmail(DataConstant.EMAIL_ACCOUNT_ADMIN);
                 this.setPassword(DataConstant.PASSWORD);
                 break;
             default:
@@ -121,12 +29,12 @@ public class LoginPayload {
         }
     }
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
