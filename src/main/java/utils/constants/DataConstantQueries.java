@@ -12,7 +12,7 @@ public class DataConstantQueries {
    public static final String PATH_TO_CREATE_HH = "/api/Authentication/Register/Household";
    public static final String PATH_FOR_HH = "/api/households/";
    public static final  String PATH_FOR_SCENARIO = "/api/planScenarios/";
-   public static final  String PATH_TO_LOGIN = "/api/Authentication/login";
+   public static final  String PATH_TO_LOGIN = "/api/auth/login";
    public static final String PATH_FOR_MEMBER = "/api/Members/";
 
 }

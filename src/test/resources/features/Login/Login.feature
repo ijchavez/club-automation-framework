@@ -6,6 +6,6 @@ Feature: Login
 
   @Login
   Scenario: A Role Advisor Validations
-    Given An "advEnterpriseSecurity11FromFirm1" is logged in the system as "Advisor"
+    Given An "normalAccount" is logged in the system
 
 

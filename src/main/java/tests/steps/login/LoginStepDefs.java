@@ -32,23 +32,10 @@ public class LoginStepDefs {
      * This anAuthorizationUser method trigger the login request and store in the context each value necessary
      *
      * @param registerAccounts it's the mail associated with the account
-     * @param role             it's the role that will be logged (FIRM,ADVISOR,HH)
      */
-    @Given("^An \"([^\"]*)\" is logged in the system as \"([^\"]*)\"$")
-    public void anAuthorizationUser(RegisterAccounts registerAccounts, UserRole role) {
-        ArrayList<Long> arrayListListOfGroupIds = new ArrayList<>();
-        Long[] longArray;
+    @Given("^An \"([^\"]*)\" is logged in the system$")
+    public void anAuthorizationUser(RegisterAccounts registerAccounts) {
         this.requestFactory.setToken(loginPageEndpoint.anAuthorizedUserLogged(registerAccounts));
-        if (UserRole.Firm.equals(role)) {
-            this.context.setScenarioContext(DataConstant.FIRM_ID, firmEndpoint.firmId());
-            this.context.setScenarioContext(DataConstant.CURRENT_USER_ID, firmEndpoint.currentUserId());
-            this.context.setScenarioContext(DataConstant.PARENT_GROUP_ID, firmEndpoint.getParentIdOfGroup());
-            for (Integer intValue : firmEndpoint.listOfGroupsIds()) {
-                arrayListListOfGroupIds.add(intValue.longValue());
-            }
-            longArray = arrayListListOfGroupIds.toArray(new Long[0]);
-            this.context.setScenarioContext(DataConstant.ARRAY_LIST_OF_GROUP_IDS, longArray);
-        }
     }
 
     @Then("^A list of members are available")
