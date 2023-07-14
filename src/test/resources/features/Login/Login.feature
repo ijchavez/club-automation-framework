@@ -8,4 +8,7 @@ Feature: Login
   Scenario: A Role Advisor Validations
     Given An "normalAccount" is logged in the system
 
+# successful login
+# unsuccessful login
+
 

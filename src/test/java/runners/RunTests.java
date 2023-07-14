@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = {"tests"},
         features = "src/test/resources/features",
-        tags = {"not @Skip"},
+        tags = {"@Login"},
         plugin = {"pretty", "html:test-output","html:target/site/cucumber-pretty","json:test-output/cucumber.json","json:target/cucumber.json"})
 
 public class RunTests {
