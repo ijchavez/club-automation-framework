@@ -8,6 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import utils.DriverFactory;
+import utils.HelperMethods;
 import utils.ReadProperties;
 import utils.constants.Constant;
 
@@ -20,9 +21,11 @@ public class SearchStepDefs {
 
     Scenario scenario;
     DriverFactory driverFactory;
+    HelperMethods helperMethods;
 
     public SearchStepDefs(DriverFactory driverFactory) {
         this.driverFactory = driverFactory;
+        helperMethods = new HelperMethods(this.driverFactory.getDriver());
     }
 
     @And("^setUp$")
@@ -45,7 +48,7 @@ public class SearchStepDefs {
     @After
     public void TearDownTest(Scenario sc) {
         if (sc.isFailed()) {
-            this.driverFactory.getLoginObj().takePicture(sc.getId());
+            helperMethods.takePicture(sc.getId(), driverFactory.getDriver());
         }
         this.driverFactory.getDriver().quit();
         scenario.write(scenario.getName());

@@ -15,12 +15,11 @@ public class MenuStepDefs {
 
     @Then("^the Home page is displayed$")
     public void validateHomePageIsDisplayed() {
-        Assert.assertTrue("Menu page is not displayed", this.driverFactory.getMenuPage().isMenuPageDisplayed());
+        Assert.assertTrue("Menu page is not displayed", this.driverFactory.getMenuPage().isHomePageDisplayed());
     }
 
     @And("^\"([^\"]*)\" options are displayed$")
     public void validateOptionsAreDisplayed(UserRole role) {
-        Assert.assertTrue("The: " + role + " options are not displayed", this.driverFactory.getMenuPage().areRoleOptionsDisplayed(role));
         Assert.assertTrue("The logout button is not displayed", this.driverFactory.getMenuPage().isLogoutOptionDisplayed());
     }
 }

@@ -1,21 +1,16 @@
 package tests.steps.login;
 
 import cucumber.api.java.en.*;
-import endpoints.Firm.FirmEndpoint;
 import endpoints.login.LoginPageEndpoint;
 import org.junit.Assert;
 import utils.DriverFactory;
-import utils.constants.DataConstant;
 import utils.RequestFactory;
 import utils.context.ScenarioContextInfoHolder;
 import utils.enums.RegisterAccounts;
 import utils.enums.UserRole;
 
-import java.util.ArrayList;
-
 public class LoginStepDefs {
     LoginPageEndpoint loginPageEndpoint;
-    FirmEndpoint firmEndpoint;
     ScenarioContextInfoHolder context;
     RequestFactory requestFactory;
     DriverFactory driverFactory;
@@ -25,7 +20,6 @@ public class LoginStepDefs {
         this.requestFactory = requestFactory;
         this.driverFactory = driverFactory;
         this.loginPageEndpoint = new LoginPageEndpoint(requestFactory);
-        this.firmEndpoint = new FirmEndpoint(requestFactory);
     }
 
     /**
@@ -38,28 +32,39 @@ public class LoginStepDefs {
         this.requestFactory.setToken(loginPageEndpoint.anAuthorizedUserLogged(registerAccounts));
     }
 
-    @Then("^A list of members are available")
-    public void validateListOfMembers() {
-        Assert.assertTrue("The members list is empty", loginPageEndpoint.listOfMembers(this.context.getScenarioContext(DataConstant.FIRM_ID)));
-    }
-
     @When("^User completes Email field with \"([^\"]*)\" credentials$")
     public void completeEmailFieldWithCredentials(UserRole role) {
-        this.driverFactory.getLoginObj().completeEmail(role);
+        this.driverFactory.getLoginPage().completeEmail(role);
+    }
+
+    @When("^User completes Email field with any credentials \"([^\"]*)\"$")
+    public void completeEmailFieldWithAnyCredentials(String user) {
+        this.driverFactory.getLoginPage().completeEmail(user);
     }
 
     @And("^User completes Password field with \"([^\"]*)\" credentials$")
     public void completePasswordFieldWithRoleCredentials(UserRole role) {
-        this.driverFactory.getLoginObj().completePassword(role);
+        this.driverFactory.getLoginPage().completePassword(role);
+    }
+
+    @And("^User completes Password field with any credentials \"([^\"]*)\"$")
+    public void completePasswordFieldWithAnyCredentials(String password) {
+        this.driverFactory.getLoginPage().completePassword(password);
     }
 
     @Given("^Login page is displayed$")
     public void validateLoginPageIsDisplayed() {
-        Assert.assertTrue("Login page is not displayed", this.driverFactory.getLoginObj().isLoginPageDisplayed());
+        Assert.assertTrue("Login page is not displayed", this.driverFactory.getLoginPage().isLoginPageDisplayed());
     }
 
     @And("^User clicks on Login button$")
     public void clickOnLoginButton() {
-        this.driverFactory.getLoginObj().clickLoginBtn();
+        this.driverFactory.getLoginPage().clickLoginBtn();
+    }
+
+    @And("^the Login button is \"([^\"]*)\"$")
+    public void isLoginButtonDisabled(String statusExpected) {
+        boolean status = this.driverFactory.getLoginPage().loginButtonVisibility();
+        Assert.assertFalse("The Login button visibility expected was false and the current is: " + status, status);
     }
 }

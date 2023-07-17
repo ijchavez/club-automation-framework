@@ -7,8 +7,8 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverFactory {
     private WebDriver driver;
-    Scenario scenario;
-    private LoginPage loginObj;
+//    Scenario scenario;
+    private LoginPage loginPage;
     private MenuPage menuPage;
 
     public DriverFactory() {
@@ -23,16 +23,16 @@ public class DriverFactory {
     }
 
     public void InitializePageObject(WebDriver driver, Scenario scenario) {
-        setLoginObj(new LoginPage(driver, scenario));
+        setLoginPage(new LoginPage(driver, scenario));
         setMenuPage(new MenuPage(driver, scenario));
     }
 
-    public LoginPage getLoginObj() {
-        return loginObj;
+    public LoginPage getLoginPage() {
+        return loginPage;
     }
 
-    public void setLoginObj(LoginPage loginObj) {
-        this.loginObj = loginObj;
+    public void setLoginPage(LoginPage loginPage) {
+        this.loginPage = loginPage;
     }
 
     public MenuPage getMenuPage() {

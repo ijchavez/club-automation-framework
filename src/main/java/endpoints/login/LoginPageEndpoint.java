@@ -37,16 +37,4 @@ public class LoginPageEndpoint extends BasePageEndpoint {
             return e.getMessage();
         }
     }
-
-    /**
-     * The listOfMembers method make a get request to get the member from one specific firm
-     *
-     * @param firmId is the firm's id to get their members
-     * @return true if the status was 200 or the list is not empty, else is false
-     */
-    public boolean listOfMembers(String firmId) {
-        Response response = this.requestFactory.makeRequest().get("/odata/Firms(" + firmId + ")" + DataConstantQueries.QUERY_TO_GET_MEMBERS);
-        Integer numberOfMembers = ((LinkedHashMap<String, Integer>) JsonPath.from(response.asString()).get()).get("@odata.count");
-        return numberOfMembers > 0 || 200 == response.statusCode();
-    }
 }
