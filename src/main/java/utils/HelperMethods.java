@@ -124,14 +124,14 @@ public class HelperMethods {
      */
     public static ChromeOptions chromeOptionsConfig() {
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--remote-allow-origins=*");
-//        options.addArguments("--headless");
-//        options.addArguments("window-size=1980,1080");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--disable-browser-side-navigation");
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--disable-gpu");
-//        options.addArguments("--disable-setuid-sandbox");
+        options.addArguments("--remote-allow-origins=*");
+        options.addArguments("--headless");
+        options.addArguments("window-size=1980,1080");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-browser-side-navigation");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-setuid-sandbox");
         return options;
     }
 

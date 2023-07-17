@@ -21,6 +21,8 @@ public class LoginPage extends BasePage {
     private WebElement PASSWORD_FIELD;
     @FindBy(how = How.XPATH, using = "//*[contains(@class,'btn-primary')][text()='Autenticar']")
     private WebElement LOGIN_BUTTON;
+    @FindBy(how = How.XPATH, using = "//*[@id='toast-container']")
+    private WebElement TOAST_MESSAGE;
     WebDriver driver;
     Scenario scenario;
     HelperMethods helperMethods;
@@ -77,5 +79,10 @@ public class LoginPage extends BasePage {
         helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
         helperMethods.waitForElementPresentLong(LOGIN_BUTTON);
         return helperMethods.isElementEnabled(LOGIN_BUTTON);
+    }
+
+    public boolean isToastMessageDisplayed() {
+        helperMethods.waitForElementPresentLong(TOAST_MESSAGE);
+        return helperMethods.isElementEnabled(TOAST_MESSAGE);
     }
 }

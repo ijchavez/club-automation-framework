@@ -67,4 +67,9 @@ public class LoginStepDefs {
         boolean status = this.driverFactory.getLoginPage().loginButtonVisibility();
         Assert.assertFalse("The Login button visibility expected was false and the current is: " + status, status);
     }
+
+    @And("^the Toast message is Displayed$")
+    public void isToastMessageDisplayed() {
+        Assert.assertTrue("The Login Page should display the Toast message",this.driverFactory.getLoginPage().isToastMessageDisplayed());
+    }
 }
