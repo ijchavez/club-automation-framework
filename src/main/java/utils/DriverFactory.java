@@ -7,7 +7,6 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverFactory {
     private WebDriver driver;
-//    Scenario scenario;
     private LoginPage loginPage;
     private MenuPage menuPage;
 

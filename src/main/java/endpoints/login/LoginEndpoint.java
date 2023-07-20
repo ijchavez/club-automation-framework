@@ -4,18 +4,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import entities.login.LoginPayload;
 import io.restassured.path.json.JsonPath;
-import endpoints.BasePageEndpoint;
+import endpoints.BaseEndpoint;
 import io.restassured.response.Response;
 import utils.RequestFactory;
 import utils.constants.DataConstantQueries;
 import utils.enums.RegisterAccounts;
 
-import java.util.LinkedHashMap;
-
-public class LoginPageEndpoint extends BasePageEndpoint {
+public class LoginEndpoint extends BaseEndpoint {
     protected RequestFactory requestFactory;
 
-    public LoginPageEndpoint(RequestFactory requestFactory) {
+    public LoginEndpoint(RequestFactory requestFactory) {
         this.requestFactory = requestFactory;
     }
 

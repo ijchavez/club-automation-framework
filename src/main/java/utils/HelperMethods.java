@@ -285,4 +285,12 @@ public class HelperMethods {
             throw new RuntimeException();
         }
     }
+
+    /**
+     * Create a Current Date
+     * return the current Date
+     */
+    public static String currentDateFull() {
+        return String.valueOf(java.time.Clock.systemUTC().instant());
+    }
 }
