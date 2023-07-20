@@ -1,7 +1,7 @@
 package tests.steps.login;
 
 import cucumber.api.java.en.*;
-import endpoints.login.LoginPageEndpoint;
+import endpoints.login.LoginEndpoint;
 import org.junit.Assert;
 import utils.DriverFactory;
 import utils.RequestFactory;
@@ -10,7 +10,7 @@ import utils.enums.RegisterAccounts;
 import utils.enums.UserRole;
 
 public class LoginStepDefs {
-    LoginPageEndpoint loginPageEndpoint;
+    LoginEndpoint loginEndpoint;
     ScenarioContextInfoHolder context;
     RequestFactory requestFactory;
     DriverFactory driverFactory;
@@ -19,7 +19,7 @@ public class LoginStepDefs {
         this.context = context;
         this.requestFactory = requestFactory;
         this.driverFactory = driverFactory;
-        this.loginPageEndpoint = new LoginPageEndpoint(requestFactory);
+        this.loginEndpoint = new LoginEndpoint(requestFactory);
     }
 
     /**
@@ -29,7 +29,7 @@ public class LoginStepDefs {
      */
     @Given("^An \"([^\"]*)\" is logged in the system$")
     public void anAuthorizationUser(RegisterAccounts registerAccounts) {
-        this.requestFactory.setToken(loginPageEndpoint.anAuthorizedUserLogged(registerAccounts));
+        this.requestFactory.setToken(loginEndpoint.anAuthorizedUserLogged(registerAccounts));
     }
 
     @When("^User completes Email field with \"([^\"]*)\" credentials$")
@@ -70,6 +70,6 @@ public class LoginStepDefs {
 
     @And("^the Toast message is Displayed$")
     public void isToastMessageDisplayed() {
-        Assert.assertTrue("The Login Page should display the Toast message",this.driverFactory.getLoginPage().isToastMessageDisplayed());
+        Assert.assertTrue("The Login Page should display the Toast message", this.driverFactory.getLoginPage().isToastMessageDisplayed());
     }
 }
