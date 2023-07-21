@@ -32,7 +32,7 @@ public class CategoryStepDefs {
         this.context.setScenarioContext(DataConstant.CURRENT_CATEGORY_ID, JsonPath.from(categoryResponse.asString()).getString("id"));
     }
 
-    @And("^User wipes the categories$")
+    @And("^User wipes the old categories$")
     public void userWipesTheCategories() {
         categoryTypeEndpoint.wipeOldCategories();
     }
@@ -45,5 +45,40 @@ public class CategoryStepDefs {
     @Then("^the category was delete correctly$")
     public void theCategoryWasDeleteCorrectly() {
         Assert.assertEquals("The status code expected was" + DataConstant.STATUS_200, DataConstant.STATUS_200, responseDeleteCategory.getStatusCode());
+    }
+
+    @Then("^the category page is displayed$")
+    public void theCategoryPageIsPresent() {
+        this.driverFactory.getCategoryPage().isCategoryPageDisplayed();
+    }
+
+    @When("^User clicks Add category button$")
+    public void userClicksAddCategoryButton() {
+        this.driverFactory.getCategoryPage().clickCategoryAddButton();
+    }
+
+    @Then("^The category modal is displayed$")
+    public void theCategoryModalIsDisplayed() {
+        this.driverFactory.getCategoryPage().isAddCategoryModalDisplayed();
+    }
+
+    @When("^User enters the category information$")
+    public void userEntersTheCategoryInformation() {
+        this.driverFactory.getCategoryPage().createCategory();
+    }
+
+    @Then("^the category was created correctly$")
+    public void theCategoryWasCreatedCorrectly() {
+        this.driverFactory.getCategoryPage().isCategoryDisplayed();
+    }
+
+    @When("^User deletes the category \"([^\"]*)\"$")
+    public void userDeletesTheCategory(boolean deleteCategory) {
+        this.driverFactory.getCategoryPage().deleteCategory(deleteCategory);
+    }
+
+    @Then("^the category was delete UI$")
+    public void theCategoryWasDeleteUI() {
+        this.driverFactory.getCategoryPage().isListOfCategoryEmpty();
     }
 }
