@@ -75,10 +75,16 @@ public class CategoryStepDefs {
     @When("^User deletes the category \"([^\"]*)\"$")
     public void userDeletesTheCategory(boolean deleteCategory) {
         this.driverFactory.getCategoryPage().deleteCategory(deleteCategory);
+        System.out.println(this.driverFactory.getCategoryPage().getMessageToast());
+        Assert.assertEquals(
+                "The expected value was " + this.driverFactory.getCategoryPage().getMessageToast(),
+                "Tipo de categoria eliminada satisfactoriamente",
+                this.driverFactory.getCategoryPage().getMessageToast());
     }
 
     @Then("^the category was delete UI$")
     public void theCategoryWasDeleteUI() {
+
         this.driverFactory.getCategoryPage().isListOfCategoryEmpty();
     }
 }

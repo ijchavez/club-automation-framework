@@ -43,6 +43,8 @@ public class CategoryPage extends BasePage {
     private WebElement CATEGORY_DELETE_YES_BUTTON;
     @FindBy(how = How.XPATH, using = "//*[@class='mat-button-wrapper'][text()='No']")
     private WebElement CATEGORY_DELETE_NO_BUTTON;
+    @FindBy(how = How.XPATH, using = "//*[@id='toast-container']//*[@role='alertdialog']")
+    private WebElement CATEGORY_TOAST;
     String categoryName = "";
     Scenario scenario;
     WebDriver driver;
@@ -125,6 +127,7 @@ public class CategoryPage extends BasePage {
         while (!helperMethods.isElementPresent(CATEGORY_DELETE_MODAL));
         if (deleteCategory) {
             helperMethods.clickWithActions(CATEGORY_DELETE_YES_BUTTON);
+            helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
         } else {
             helperMethods.clickWithActions(CATEGORY_DELETE_NO_BUTTON);
         }
@@ -132,5 +135,8 @@ public class CategoryPage extends BasePage {
 
     public boolean isListOfCategoryEmpty() {
         return CATEGORY_LIST.isEmpty();
+    }
+    public String getMessageToast(){
+        return CATEGORY_TOAST.getText();
     }
 }
