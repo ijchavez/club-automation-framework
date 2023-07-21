@@ -293,4 +293,18 @@ public class HelperMethods {
     public static String currentDateFull() {
         return String.valueOf(java.time.Clock.systemUTC().instant());
     }
+
+    /**
+     * this isElementPresent method search to find if the element exist
+     *
+     * @param element it's the goal element
+     * @return true or false because is tried with NoSuchElementException
+     */
+    public boolean isElementPresent(WebElement element) {
+        try {
+            return element.isEnabled();
+        } catch (NoSuchElementException ex) {
+            return false;
+        }
+    }
 }

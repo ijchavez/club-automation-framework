@@ -54,7 +54,7 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
     public void wipeOldCategories() {
         List<HashMap<String, ?>> listOfGroupsIdFromSpecificFirm = JsonPath.from(getAllCategories().asString()).get();
         for (HashMap<String, ?> stringHashMap : listOfGroupsIdFromSpecificFirm) {
-            if (stringHashMap.get("name").equals("Automation Category")) {
+            if (stringHashMap.get("name").toString().contains("Automation")) {
                 deleteCategory((String) stringHashMap.get("id"));
             }
         }
