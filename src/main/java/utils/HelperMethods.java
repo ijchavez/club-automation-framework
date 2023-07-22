@@ -33,10 +33,6 @@ public class HelperMethods {
     public static String environments;
     protected RequestFactory requestFactory;
 
-    public HelperMethods(RequestFactory requestFactory) {
-        this.requestFactory = requestFactory;
-    }
-
     public HelperMethods(WebDriver driver) {
         this.driver = driver;
     }
