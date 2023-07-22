@@ -1,10 +1,6 @@
 @Regression @Category
 Feature: Category
 
-  Background:
-    Given setUp
-
-
   @Category
   Scenario: Create and delete category
     Given An "normalAccount" is logged in the system
@@ -12,7 +8,7 @@ Feature: Category
 #    When User adds a new "Root" category
 #    And User deletes the current category
 #    Then the category was delete correctly
-
+    Given setUp "true"
     When Login page is displayed
     And User completes Email field with "normalAccount" credentials
     And User completes Password field with "normalAccount" credentials
