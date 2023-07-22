@@ -1,4 +1,4 @@
-package tests.steps.category;
+package tests.steps.Category;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -80,5 +80,13 @@ public class CategoryStepDefs {
     @Then("^the category was delete UI$")
     public void theCategoryWasDeleteUI() {
         this.driverFactory.getCategoryPage().isListOfCategoryEmpty();
+    }
+    @When("^the user updates the category \"([^\"]*)\"$")
+    public void userUpdatesCategory(boolean updateCategory){
+        this.driverFactory.getCategoryPage().updateCategory(updateCategory);
+    }
+    @Then("^the category is correctly updated$")
+    public void categoryWasUpdated(){
+        this.driverFactory.getCategoryPage().isCategoryDisplayed();
     }
 }

@@ -133,4 +133,21 @@ public class CategoryPage extends BasePage {
     public boolean isListOfCategoryEmpty() {
         return CATEGORY_LIST.isEmpty();
     }
+    public void updateCategory(boolean updateCategory) {
+        helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
+        do {
+            helperMethods.clickWithActions(CATEGORY_OPTIONS_DOTS);
+        }
+        while (!helperMethods.isElementPresent(CATEGORY_OPTIONS_EDIT));
+        do {
+            helperMethods.clickWithActions(CATEGORY_OPTIONS_EDIT);
+        }
+        while (!helperMethods.isElementPresent(CATEGORY_EDIT_MODAL));
+        if (updateCategory) {
+            this.categoryName();
+            this.clickAcceptModalButtonCategory();
+        } else {
+            helperMethods.clickWithActions(CATEGORY_DELETE_NO_BUTTON);
+        }
+    }
 }

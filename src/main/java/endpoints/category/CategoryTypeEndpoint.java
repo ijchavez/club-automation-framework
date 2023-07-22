@@ -10,6 +10,7 @@ import utils.RequestFactory;
 import utils.constants.DataConstantQueries;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class CategoryTypeEndpoint extends BaseEndpoint {
@@ -52,8 +53,8 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
     }
 
     public void wipeOldCategories() {
-        List<HashMap<String, ?>> listOfGroupsIdFromSpecificFirm = JsonPath.from(getAllCategories().asString()).get();
-        for (HashMap<String, ?> stringHashMap : listOfGroupsIdFromSpecificFirm) {
+        List<LinkedHashMap<String, ?>> listOfGroupsIdFromSpecificFirm = JsonPath.from(getAllCategories().asString()).get();
+        for (LinkedHashMap<String, ?> stringHashMap : listOfGroupsIdFromSpecificFirm) {
             if (stringHashMap.get("name").toString().contains("Automation")) {
                 deleteCategory((String) stringHashMap.get("id"));
             }
