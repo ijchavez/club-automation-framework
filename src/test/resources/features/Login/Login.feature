@@ -2,7 +2,7 @@
 Feature: Login
 
   Background:
-    Given setUp
+    Given setUp "true"
 
   @Login
   Scenario: Login successful with correct credentials

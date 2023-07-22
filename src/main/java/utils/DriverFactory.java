@@ -11,6 +11,7 @@ public class DriverFactory {
     private LoginPage loginPage;
     private MenuPage menuPage;
     private CategoryPage categoryPage;
+    private HelperMethods helperMethods;
 
     public DriverFactory() {
     }
@@ -27,6 +28,7 @@ public class DriverFactory {
         setLoginPage(new LoginPage(driver, scenario));
         setMenuPage(new MenuPage(driver, scenario));
         setCategoryPage(new CategoryPage(driver, scenario));
+        setHelperMethods(new HelperMethods(driver));
     }
 
     public LoginPage getLoginPage() {
@@ -51,5 +53,13 @@ public class DriverFactory {
 
     public void setCategoryPage(CategoryPage categoryPage) {
         this.categoryPage = categoryPage;
+    }
+
+    public HelperMethods getHelperMethods() {
+        return helperMethods;
+    }
+
+    public void setHelperMethods(HelperMethods helperMethods) {
+        this.helperMethods = helperMethods;
     }
 }
