@@ -128,6 +128,7 @@ public class CategoryPage extends BasePage {
         } else {
             helperMethods.clickWithActions(CATEGORY_DELETE_NO_BUTTON);
         }
+        helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
     }
 
     public boolean isListOfCategoryEmpty() {

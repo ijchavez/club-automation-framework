@@ -39,12 +39,13 @@ public class CategoryStepDefs {
 
     @And("^User deletes the current category$")
     public void userDeletesTheCurrentCategory() {
-        responseDeleteCategory = categoryTypeEndpoint.deleteCategory(this.context.getScenarioContext(DataConstant.CURRENT_CATEGORY_ID));
+        String categoryId = (String) categoryTypeEndpoint.getCurrentCategory().get("id");
+        responseDeleteCategory = categoryTypeEndpoint.deleteCategory(categoryId);
     }
 
     @Then("^the category was delete correctly$")
     public void theCategoryWasDeleteCorrectly() {
-        Assert.assertEquals("The status code expected was" + DataConstant.STATUS_200, DataConstant.STATUS_200, responseDeleteCategory.getStatusCode());
+        Assert.assertEquals("The status code expected was" + DataConstant.STATUS_200 + " the current was " + responseDeleteCategory.getStatusCode(), DataConstant.STATUS_200, responseDeleteCategory.getStatusCode());
     }
 
     @Then("^the category page is displayed$")
@@ -81,12 +82,14 @@ public class CategoryStepDefs {
     public void theCategoryWasDeleteUI() {
         this.driverFactory.getCategoryPage().isListOfCategoryEmpty();
     }
-    @When("^the user updates the category \"([^\"]*)\"$")
-    public void userUpdatesCategory(boolean updateCategory){
+
+    @When("^User updates the category \"([^\"]*)\"$")
+    public void userUpdatesCategory(boolean updateCategory) {
         this.driverFactory.getCategoryPage().updateCategory(updateCategory);
     }
+
     @Then("^the category is correctly updated$")
-    public void categoryWasUpdated(){
+    public void categoryWasUpdated() {
         this.driverFactory.getCategoryPage().isCategoryDisplayed();
     }
 }
