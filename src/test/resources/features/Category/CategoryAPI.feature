@@ -22,7 +22,7 @@ Feature: CategoryAPI
     When User deletes the current category
     Then the category was delete correctly
 
-  @CategoryAPIs
+  @CategoryAPI
   Scenario: Delete category
     Given User adds a new "Root" category
     When setUp "true"
