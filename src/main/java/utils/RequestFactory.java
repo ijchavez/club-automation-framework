@@ -1,6 +1,7 @@
 package utils;
 
 import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 import utils.constants.DataConstant;
 
@@ -25,10 +26,9 @@ public class RequestFactory {
     public RequestSpecification makeRequest(Boolean authenticated) {
         RestAssured.baseURI = DataConstant.BASE_URL;
         RequestSpecification request = RestAssured.given();
-        request = request.header("Content-Type", "application/json")
-                .header("accept", "*/*");
+        request = request.contentType(ContentType.JSON).accept("*/*");
         if (Boolean.TRUE.equals(authenticated)) {
-            request = request.header("Authorization", "Bearer " + getToken());
+            request = request.auth().oauth2(getToken());
         }
         return request;
     }
