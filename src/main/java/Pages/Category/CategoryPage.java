@@ -57,6 +57,7 @@ public class CategoryPage extends BasePage {
     }
 
     public boolean isCategoryPageDisplayed() {
+        helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
         helperMethods.waitForElementPresentLong(TITLE);
         return helperMethods.elementExistWaitLongTime(TITLE);
     }
@@ -134,9 +135,11 @@ public class CategoryPage extends BasePage {
     public boolean isListOfCategoryEmpty() {
         return CATEGORY_LIST.isEmpty();
     }
+
     public void updateCategory(boolean updateCategory) {
-        helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
+        helperMethods.waitForElements(Constant.MEDIUM_TIMEOUT);
         do {
+            helperMethods.waitForElementPresentLong(CATEGORY_OPTIONS_DOTS);
             helperMethods.clickWithActions(CATEGORY_OPTIONS_DOTS);
         }
         while (!helperMethods.isElementPresent(CATEGORY_OPTIONS_EDIT));

@@ -77,8 +77,11 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
 
     public Map<String, ?> getCurrentCategory() {
         List<HashMap<String, ?>> listOfGroupsIdFromSpecificFirm = JsonPath.from(getAllCategories().asString()).get();
-        HashMap<String, ?> stringHashMap = listOfGroupsIdFromSpecificFirm.get(listOfGroupsIdFromSpecificFirm.size() - 1);
-        return stringHashMap;
+        if (!listOfGroupsIdFromSpecificFirm.isEmpty()) {
+            return listOfGroupsIdFromSpecificFirm.get(listOfGroupsIdFromSpecificFirm.size() - 1);
+        } else {
+            throw new RuntimeException("This category doesnt exist");
+        }
     }
 
     /**
@@ -86,9 +89,11 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
      */
     public void wipeOldCategories() {
         List<LinkedHashMap<String, ?>> listOfGroupsIdFromSpecificFirm = JsonPath.from(getAllCategories().asString()).get();
-        for (LinkedHashMap<String, ?> stringHashMap : listOfGroupsIdFromSpecificFirm) {
-            if (stringHashMap.get("name").toString().contains("Automation")) {
-                deleteCategory((String) stringHashMap.get("id"));
+        if (!listOfGroupsIdFromSpecificFirm.isEmpty()) {
+            for (LinkedHashMap<String, ?> stringHashMap : listOfGroupsIdFromSpecificFirm) {
+                if (stringHashMap.get("name").toString().contains("Automation")) {
+                    deleteCategory((String) stringHashMap.get("id"));
+                }
             }
         }
     }
