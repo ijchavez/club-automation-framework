@@ -135,7 +135,7 @@ public class CategoryPage extends BasePage {
         return CATEGORY_LIST.isEmpty();
     }
     public void updateCategory(boolean updateCategory) {
-        helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
+        helperMethods.waitForElements(Constant.MEDIUM_TIMEOUT);
         do {
             helperMethods.clickWithActions(CATEGORY_OPTIONS_DOTS);
         }
