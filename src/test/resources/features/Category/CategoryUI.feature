@@ -1,4 +1,4 @@
-@Regression @Category
+@Category
 Feature: CategoryUI
 
   @CategoryUI
