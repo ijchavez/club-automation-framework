@@ -37,6 +37,8 @@ public class MenuPage extends BasePage {
     }
 
     public boolean isHomePageDisplayed() {
+        helperMethods.waitForElements(Constant.MEDIUM_TIMEOUT);
+        helperMethods.waitForElementClickableLong(LOGOUT_BUTTON);
         return isMenuPageDisplayed();
     }
 
