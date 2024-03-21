@@ -2,14 +2,13 @@ package endpoints.member;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import endpoints.BaseEndpoint;
 import entities.category.CategoryTypePayload;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import utils.RequestFactory;
 import utils.constants.DataConstantQueries;
 
-public class MemberEndpoint extends BaseEndpoint {
+public class MemberEndpoint {
     protected RequestFactory requestFactory;
 
     public MemberEndpoint(RequestFactory requestFactory) {

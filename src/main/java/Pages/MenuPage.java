@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import utils.HelperMethods;
 import utils.constants.Constant;
 
@@ -18,16 +17,11 @@ public class MenuPage extends BasePage {
     private WebElement LOGOUT_BUTTON;
     @FindBy(how = How.XPATH, using = "//*[contains(@class,'text-uppercase')][contains(text(),'Total de contribuciones')]")
     private WebElement DASHBOARD_LABEL;
-    Scenario scenario;
-    WebDriver driver;
     HelperMethods helperMethods;
 
     public MenuPage(WebDriver driver, Scenario scenario) {
-        super(driver);
-        this.driver = driver;
-        this.scenario = scenario;
+        super(driver, scenario);
         helperMethods = new HelperMethods(driver);
-        PageFactory.initElements(driver, this);
     }
 
     public boolean isMenuPageDisplayed() {

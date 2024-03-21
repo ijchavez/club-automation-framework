@@ -2,7 +2,6 @@ package endpoints.category;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import endpoints.BaseEndpoint;
 import entities.category.CategoryTypePayload;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
@@ -14,7 +13,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class CategoryTypeEndpoint extends BaseEndpoint {
+public class CategoryTypeEndpoint {
     protected RequestFactory requestFactory;
 
     public CategoryTypeEndpoint(RequestFactory requestFactory) {
@@ -27,7 +26,7 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
     }
 
     /**
-     * this addCategory method prepare the category payload and name to pass through the
+     * this addCategory method prepares the category payload and name to pass through the
      * getResponseCategoryType method by parameters
      *
      * @return
@@ -38,7 +37,7 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
     }
 
     /**
-     * this getResponseCategoryType send a post request to create a category
+     * this getResponseCategoryType sends a post-request to create a category
      *
      * @param categoryPayload it's the body of the request to create the category
      * @return the response of the request
@@ -55,7 +54,7 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
     }
 
     /**
-     * this deleteCategory method send a delete request to delete a category by id
+     * this deleteCategory method send a deleted request to delete a category by id
      *
      * @param categoryTypeId it's the category id
      * @return
@@ -66,7 +65,7 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
     }
 
     /**
-     * this getAllCategories method send a get request to obtains all categories
+     * this getAllCategories method sends a get request to obtain all categories
      *
      * @return the response of the request
      */
@@ -85,7 +84,7 @@ public class CategoryTypeEndpoint extends BaseEndpoint {
     }
 
     /**
-     * this wipeOldCategories rerun the category list and delete the category who contains the automation name
+     * this wipeOldCategories reruns the category list and deletes the category who contains the automation name
      */
     public void wipeOldCategories() {
         List<LinkedHashMap<String, ?>> listOfGroupsIdFromSpecificFirm = JsonPath.from(getAllCategories().asString()).get();

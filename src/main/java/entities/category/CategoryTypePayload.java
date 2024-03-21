@@ -1,12 +1,13 @@
 
 package entities.category;
 
-import javax.annotation.Generated;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Getter;
+import lombok.Setter;
 
-@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
+@Getter
+@Setter
 public class CategoryTypePayload {
 
     @SerializedName("name")
@@ -17,38 +18,13 @@ public class CategoryTypePayload {
     private Boolean mRoot;
 
     public CategoryTypePayload(String categoryName) {
-        this.setName(categoryName);
-        this.setRoot(true);
+        this.setMName(categoryName);
+        this.setMRoot(true);
     }
 
     public CategoryTypePayload(String categoryName, String categoryParentId) {
-        this.setName(categoryName);
-        this.setParentId(categoryParentId);
-        this.setRoot(false);
+        this.setMName(categoryName);
+        this.setMParentId(categoryParentId);
+        this.setMRoot(false);
     }
-
-    public String getName() {
-        return mName;
-    }
-
-    public void setName(String name) {
-        mName = name;
-    }
-
-    public String getParentId() {
-        return mParentId;
-    }
-
-    public void setParentId(String parentId) {
-        mParentId = parentId;
-    }
-
-    public Boolean getRoot() {
-        return mRoot;
-    }
-
-    public void setRoot(Boolean root) {
-        mRoot = root;
-    }
-
 }

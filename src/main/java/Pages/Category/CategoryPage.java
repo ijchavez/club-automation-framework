@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import utils.HelperMethods;
 import utils.constants.Constant;
 
@@ -44,34 +43,17 @@ public class CategoryPage extends BasePage {
     @FindBy(how = How.XPATH, using = "//*[@class='mat-button-wrapper'][text()='No']")
     private WebElement CATEGORY_DELETE_NO_BUTTON;
     String categoryName = "";
-    Scenario scenario;
-    WebDriver driver;
     HelperMethods helperMethods;
 
     public CategoryPage(WebDriver driver, Scenario scenario) {
-        super(driver);
-        this.driver = driver;
-        this.scenario = scenario;
+        super(driver, scenario);
         helperMethods = new HelperMethods(driver);
-        PageFactory.initElements(driver, this);
     }
 
     public boolean isCategoryPageDisplayed() {
         helperMethods.waitForElements(Constant.SHORT_TIMEOUT);
         helperMethods.waitForElementPresentLong(TITLE);
         return helperMethods.elementExistWaitLongTime(TITLE);
-    }
-
-    public boolean isEnabledDashBoardLabel() {
-        helperMethods.waitForElements(Constant.MEDIUM_TIMEOUT);
-        helperMethods.waitForElementPresentLong(DASHBOARD_LABEL);
-        return helperMethods.isElementEnabled(DASHBOARD_LABEL);
-    }
-
-    public void clickCategoryOptions() {
-        helperMethods.waitForElements(Constant.MEDIUM_TIMEOUT);
-        helperMethods.waitForElementPresentLong(CATEGORY_OPTIONS_DOTS);
-        helperMethods.clickWithActions(CATEGORY_OPTIONS_DOTS);
     }
 
     public void clickCategoryAddButton() {
@@ -93,11 +75,6 @@ public class CategoryPage extends BasePage {
     public void clickAcceptModalButtonCategory() {
         helperMethods.waitForElementClickableLong(CATEGORY_ACCEPT_MODAL_BUTTON);
         helperMethods.clickWithActions(CATEGORY_ACCEPT_MODAL_BUTTON);
-    }
-
-    public void clickCancelModalButtonCategory() {
-        helperMethods.waitForElementClickableLong(CATEGORY_CANCEL_MODAL_BUTTON);
-        helperMethods.clickWithActions(CATEGORY_CANCEL_MODAL_BUTTON);
     }
 
     public void createCategory() {

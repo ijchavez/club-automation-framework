@@ -54,7 +54,7 @@ public class HelperMethods {
     }
 
     /**
-     * This getPassword method get the map of environment variables defined in the system
+     * This getPassword method gets the map of environment variables defined in the system
      *
      * @param key it's the key of the password
      * @return the value of the password defined on the environment variables
@@ -114,14 +114,14 @@ public class HelperMethods {
     }
 
     /**
-     * This function is used to configure the ChromeOptions object that is used to create a ChromeDriver object
+     * This function is used to configure the ChromeOptions object used to create a ChromeDriver object
      *
      * @return A ChromeOptions object
      */
     public static ChromeOptions chromeOptionsConfig() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         options.addArguments("window-size=1980,1080");
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-browser-side-navigation");
@@ -132,7 +132,7 @@ public class HelperMethods {
     }
 
     /**
-     * This getPostResponse method trigger the post request
+     * This getPostResponse method triggers the post-request
      *
      * @param payload it's the payload related with the update goal
      * @return
@@ -149,30 +149,6 @@ public class HelperMethods {
         }
     }
 
-    /**
-     * This getPutResponse method trigger the put request
-     *
-     * @param payload it's the payload related with the update goal
-     * @param id      it's the id necessary to complete the request path
-     * @return the response related with the request
-     */
-    public Response getPutResponse(Object payload, Long id, boolean isPayloadSurroundBrackets) {
-        ObjectMapper objectMapper = new ObjectMapper();
-        try {
-            String payloadFormatted = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(payload);
-            String payloadSurrounded = isPayloadSurroundBrackets ? "[\n" + payloadFormatted + "\n]" : payloadFormatted;
-            return requestFactory.makeRequest().body(payloadSurrounded)
-                    .put(DataConstantQueries.PATH_FOR_MEMBER + id.toString());
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-            throw new RuntimeException();
-        }
-    }
-
-    public static String getTimeStamp() {
-        Date date = new Date();
-        return String.valueOf(date.getTime());
-    }
 
     public boolean elementExistWaitLongTime(WebElement element) {
         try {
@@ -193,10 +169,10 @@ public class HelperMethods {
     }
 
     /**
-     * Wait for element to be present, clear the field and complete the field with the value
+     * Wait for an element to be present, clear the field and complete the field with the value
      *
      * @param element to send the value
-     * @param value   to sent to the value
+     * @param value   to send to the value
      */
     public void sendKeysInElement(WebElement element, String value) {
         waitForElementPresentLong(element);
@@ -210,12 +186,13 @@ public class HelperMethods {
     }
 
     /**
-     * Wait for element to be present and then click the element
+     * Wait for an element to be present and then click the element
      *
      * @param element to click on
      */
     public void clickWithActions(WebElement element) {
-        if (environments.equalsIgnoreCase("LOCAL")) {
+
+        if (environments.equalsIgnoreCase(localEnvironment)) {
             waitBlockUIDisappear();
         }
         waitForElementPresentLong(element);
@@ -223,7 +200,6 @@ public class HelperMethods {
         waitForElementClickableLong(element);
         action.moveToElement(element).click(element).perform();
     }
-
 
     public void waitBlockUIDisappear() {
         int waited = 0;
@@ -234,7 +210,7 @@ public class HelperMethods {
     }
 
     public void waitForElementClickableLong(WebElement element) {
-        if (environments.equalsIgnoreCase("LOCAL")) {
+        if (environments.equalsIgnoreCase(localEnvironment)) {
             waitBlockUIDisappear();
         }
         waitForElementPresentLong(element);
@@ -252,7 +228,7 @@ public class HelperMethods {
     }
 
     protected void waitForElementClickable(WebElement element, int time, WebDriver optionalDriver) {
-        if (environments.equalsIgnoreCase("LOCAL")) {
+        if (environments.equalsIgnoreCase(localEnvironment)) {
             waitBlockUIDisappear();
         }
         WebDriverWait wait = new WebDriverWait(optionalDriver, Duration.ofSeconds(time));
@@ -271,7 +247,7 @@ public class HelperMethods {
     /**
      * taking a screenshot
      *
-     * @param name name of screenshot where will be saved in screenshot folder.
+     * @param name name of screenshot where will be saved in the screenshot folder.
      */
     public void takePicture(String name, WebDriver driver) {
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -291,7 +267,7 @@ public class HelperMethods {
     }
 
     /**
-     * this isElementPresent method search to find if the element exist
+     * this isElementPresent method search to find if the element exists
      *
      * @param element it's the goal element
      * @return true or false because is tried with NoSuchElementException

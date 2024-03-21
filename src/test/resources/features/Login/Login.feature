@@ -4,7 +4,7 @@ Feature: Login
   Background:
     Given setUp "true"
 
-  @Login
+  @Logins
   Scenario: Login successful with correct credentials
     Given An "normalAccount" is logged in the system
     When Login page is displayed

@@ -4,13 +4,11 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import utils.DriverFactory;
 import utils.HelperMethods;
 import utils.ReadProperties;
 import utils.constants.Constant;
-
 
 import java.time.Duration;
 
@@ -30,7 +28,6 @@ public class ScenarioSetUp {
 
     @And("^setUp \"([^\"]*)\"$")
     public void scenarioDriverSetUp(boolean upDriver) {
-        WebDriverManager.chromedriver().setup();
         if (upDriver) {
             flagDriver = true;
             this.driverFactory.setDriver(new ChromeDriver(chromeOptionsConfig()));

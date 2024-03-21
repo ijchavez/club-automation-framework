@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 import utils.HelperMethods;
 import utils.constants.Constant;
 import utils.constants.DataConstant;
@@ -23,16 +22,11 @@ public class LoginPage extends BasePage {
     private WebElement LOGIN_BUTTON;
     @FindBy(how = How.XPATH, using = "//*[@id='toast-container']")
     private WebElement TOAST_MESSAGE;
-    WebDriver driver;
-    Scenario scenario;
     HelperMethods helperMethods;
 
     public LoginPage(WebDriver driver, Scenario scenario) {
-        super(driver);
-        this.driver = driver;
-        this.scenario = scenario;
+        super(driver, scenario);
         helperMethods = new HelperMethods(driver);
-        PageFactory.initElements(driver, this);
     }
 
     public boolean isLoginPageDisplayed() {
@@ -41,12 +35,8 @@ public class LoginPage extends BasePage {
 
     public void completeEmail(UserRole role) {
         switch (role) {
-            case superAdmin:
-                helperMethods.sendKeysInElement(EMAIL_FIELD, DataConstant.EMAIL_SUPER_ADMIN);
-                break;
-            case normalAccount:
-                helperMethods.sendKeysInElement(EMAIL_FIELD, DataConstant.EMAIL_ACCOUNT_ADMIN);
-                break;
+            case superAdmin -> helperMethods.sendKeysInElement(EMAIL_FIELD, DataConstant.EMAIL_SUPER_ADMIN);
+            case normalAccount -> helperMethods.sendKeysInElement(EMAIL_FIELD, DataConstant.EMAIL_ACCOUNT_ADMIN);
         }
     }
 
@@ -56,12 +46,8 @@ public class LoginPage extends BasePage {
 
     public void completePassword(UserRole role) {
         switch (role) {
-            case superAdmin:
-                helperMethods.sendKeysInElement(PASSWORD_FIELD, DataConstant.PASSWORD_SUPER_ADMIN);
-                break;
-            case normalAccount:
-                helperMethods.sendKeysInElement(PASSWORD_FIELD, DataConstant.PASSWORD);
-                break;
+            case superAdmin -> helperMethods.sendKeysInElement(PASSWORD_FIELD, DataConstant.PASSWORD_SUPER_ADMIN);
+            case normalAccount -> helperMethods.sendKeysInElement(PASSWORD_FIELD, DataConstant.PASSWORD);
         }
     }
 
